@@ -1,15 +1,14 @@
-import { Story, StoryProps } from "./Story";
+import useSWR, { Fetcher } from "swr";
+import { Story, Story as StoryComponent } from "./Story";
+import { API_URLS } from "./urls";
+
+const fetcher: Fetcher<Story[], string> = (url) =>
+  window.fetch(url).then((res) => res.json());
 
 export function TopStories() {
-  const props: StoryProps = {
-    id: 1,
-    title: "Rust Maintainer for Linux Kernel Resigns",
-    domain: "ostechnix.com",
-    points: 78,
-    user: "muhammad_saqib",
-    time_ago: "an hour ago",
-    commentsCount: 20,
-  };
+  const { data } = useSWR(API_URLS.NEWS, fetcher, { suspense: true });
 
-  return <Story index={1} {...props} />;
+  return data.map((story, index) => (
+    <StoryComponent key={story.id} index={index} {...story} />
+  ));
 }
