@@ -1,3 +1,12 @@
+import { TopStories } from "./TopStories";
+
 export function App() {
-  return <h1 className="text-3xl underline font-bold">Hello world!</h1>;
+  return (
+    <>
+      <nav className="bg-slate-300 basis-8"></nav>
+      <main className="flex-1">
+        <TopStories />
+      </main>
+    </>
+  );
 }
