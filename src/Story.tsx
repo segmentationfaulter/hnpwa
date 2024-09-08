@@ -5,7 +5,7 @@ export type Story = {
   points: number;
   time_ago: string;
   user: string;
-  commentsCount: number;
+  comments_count: number;
 };
 
 export function Story(props: Story & { index: number }) {
@@ -21,7 +21,7 @@ export function Story(props: Story & { index: number }) {
           <span className="opacity-75">{props.points} points by</span>
           <span className="font-medium">{props.user}</span>
           <span className="opacity-75">{props.time_ago} |</span>
-          <span className="font-medium">{props.commentsCount}</span>
+          <span className="font-medium">{props.comments_count} comments</span>
         </div>
       </div>
     </div>
