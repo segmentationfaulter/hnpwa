@@ -1,21 +1,25 @@
 import useSWR, { Fetcher } from "swr";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { FeedItem as FeedItemComponent } from "./FeedItem";
 import { Item } from "./Item";
 import type { FeedItem } from "./Schema";
 import { API_URLS } from "./urls";
-
-const fetcher: Fetcher<FeedItem[], string> = (url) =>
-  window.fetch(url).then((res) => res.json());
+import { fetcher } from "./utils/fetcher";
 
 export function TopStories() {
-  const [currentPage, setCurrentPage] = useState<"feed" | "item">("feed");
-  const { data } = useSWR(API_URLS.NEWS, fetcher, { suspense: true });
+  const [selectedItem, setSelectedItem] = useState<number>();
+  const { data } = useSWR(API_URLS.NEWS, fetcher<FeedItem[]>, {
+    suspense: true,
+  });
 
-  const handleCommentsClick = () => setCurrentPage("item");
+  const handleCommentsClick = (id: number) => setSelectedItem(id);
 
-  if (currentPage === "item") {
-    return <Item />;
+  if (selectedItem) {
+    return (
+      <Suspense fallback={<p>Loading...</p>}>
+        <Item id={selectedItem} />
+      </Suspense>
+    );
   }
 
   return data.map((story, index) => (

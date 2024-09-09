@@ -1,9 +1,10 @@
+import { SubTitle } from "./components/SubTitle";
 import type { FeedItem } from "./Schema";
 
 export function FeedItem(
   props: FeedItem & {
     index: number;
-    onCommentsClick: React.MouseEventHandler;
+    onCommentsClick: (id: number) => void;
   }
 ) {
   return (
@@ -14,17 +15,7 @@ export function FeedItem(
           <span>{props.title}</span>
           <span className="text-xs opacity-75">{props.domain}</span>
         </div>
-        <div className="space-x-1 text-xs">
-          <span className="opacity-75">{props.points} points by</span>
-          <span className="font-medium">{props.user}</span>
-          <span className="opacity-75">{props.time_ago} |</span>
-          <span
-            className="font-medium cursor-pointer"
-            onClick={props.onCommentsClick}
-          >
-            {props.comments_count} comments
-          </span>
-        </div>
+        <SubTitle {...props} />
       </div>
     </div>
   );

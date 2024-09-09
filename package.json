@@ -19,6 +19,7 @@
     "tailwindcss": "^3.4.10"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",

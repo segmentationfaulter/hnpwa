@@ -10,4 +10,5 @@ export const API_URLS = {
   ASK: generateApiUrl("/ask/1.json"),
   SHOW: generateApiUrl("/show/1.json"),
   JOBS: generateApiUrl("/jobs/1.json"),
+  ITEM: (id: number) => generateApiUrl(`/item/${id}.json`),
 };
