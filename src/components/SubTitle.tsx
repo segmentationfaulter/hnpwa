@@ -11,7 +11,7 @@ export function SubTitle(
       <span className="opacity-75">{props.time_ago} |</span>
       <span
         className={clsx("font-medium", {
-          "cursor-pointer": props.onCommentsClick,
+          "cursor-pointer": props.onCommentsClick !== undefined,
         })}
         onClick={() => props.onCommentsClick?.(props.id)}
       >
