@@ -8,7 +8,12 @@ export type Story = {
   comments_count: number;
 };
 
-export function Story(props: Story & { index: number }) {
+export function Story(
+  props: Story & {
+    index: number;
+    onCommentsClick: React.MouseEventHandler;
+  }
+) {
   return (
     <div className="flex items-center gap-5">
       <div className="max-w-4">{props.index}</div>
@@ -21,7 +26,9 @@ export function Story(props: Story & { index: number }) {
           <span className="opacity-75">{props.points} points by</span>
           <span className="font-medium">{props.user}</span>
           <span className="opacity-75">{props.time_ago} |</span>
-          <span className="font-medium">{props.comments_count} comments</span>
+          <span className="font-medium cursor-pointer" onClick={props.onCommentsClick}>
+            {props.comments_count} comments
+          </span>
         </div>
       </div>
     </div>
