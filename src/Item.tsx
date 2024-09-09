@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Item } from "./Schema";
+import type { Item } from "./Schema";
 import { API_URLS } from "./urls";
 import { fetcher } from "./utils/fetcher";
 import { SubTitle } from "./components/SubTitle";
