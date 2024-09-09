@@ -1,15 +1,7 @@
-export type Story = {
-  id: number;
-  title: string;
-  domain: string;
-  points: number;
-  time_ago: string;
-  user: string;
-  comments_count: number;
-};
+import type { FeedItem } from "./Schema";
 
-export function Story(
-  props: Story & {
+export function FeedItem(
+  props: FeedItem & {
     index: number;
     onCommentsClick: React.MouseEventHandler;
   }
@@ -26,7 +18,10 @@ export function Story(
           <span className="opacity-75">{props.points} points by</span>
           <span className="font-medium">{props.user}</span>
           <span className="opacity-75">{props.time_ago} |</span>
-          <span className="font-medium cursor-pointer" onClick={props.onCommentsClick}>
+          <span
+            className="font-medium cursor-pointer"
+            onClick={props.onCommentsClick}
+          >
             {props.comments_count} comments
           </span>
         </div>

@@ -1,10 +1,11 @@
 import useSWR, { Fetcher } from "swr";
-import { Story, Story as StoryComponent } from "./Story";
-import { API_URLS } from "./urls";
 import { useState } from "react";
-import { Comments } from "./Comments";
+import { FeedItem as FeedItemComponent } from "./FeedItem";
+import { Item } from "./Item";
+import type { FeedItem } from "./Schema";
+import { API_URLS } from "./urls";
 
-const fetcher: Fetcher<Story[], string> = (url) =>
+const fetcher: Fetcher<FeedItem[], string> = (url) =>
   window.fetch(url).then((res) => res.json());
 
 export function TopStories() {
@@ -14,11 +15,11 @@ export function TopStories() {
   const handleCommentsClick = () => setCurrentPage("comments");
 
   if (currentPage === "comments") {
-    return <Comments />;
+    return <Item />;
   }
 
   return data.map((story, index) => (
-    <StoryComponent
+    <FeedItemComponent
       key={story.id}
       index={index}
       onCommentsClick={handleCommentsClick}
