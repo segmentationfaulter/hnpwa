@@ -9,12 +9,12 @@ const fetcher: Fetcher<FeedItem[], string> = (url) =>
   window.fetch(url).then((res) => res.json());
 
 export function TopStories() {
-  const [currentPage, setCurrentPage] = useState<"main" | "comments">("main");
+  const [currentPage, setCurrentPage] = useState<"feed" | "item">("feed");
   const { data } = useSWR(API_URLS.NEWS, fetcher, { suspense: true });
 
-  const handleCommentsClick = () => setCurrentPage("comments");
+  const handleCommentsClick = () => setCurrentPage("item");
 
-  if (currentPage === "comments") {
+  if (currentPage === "item") {
     return <Item />;
   }
 
