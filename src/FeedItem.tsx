@@ -5,7 +5,7 @@ export function FeedItem(
   props: FeedItem & {
     index: number;
     onCommentsClick: (id: number) => void;
-  }
+  },
 ) {
   return (
     <div className="flex items-center gap-5">

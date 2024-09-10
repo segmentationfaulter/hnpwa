@@ -1,4 +1,4 @@
-import useSWR, { Fetcher } from "swr";
+import useSWR from "swr";
 import { Suspense, useState } from "react";
 import { FeedItem as FeedItemComponent } from "./FeedItem";
 import { Item } from "./Item";
@@ -22,12 +22,12 @@ export function TopStories() {
     );
   }
 
-  return data.map((story, index) => (
+  return data.map((item, index) => (
     <FeedItemComponent
-      key={story.id}
+      key={item.id}
       index={index}
       onCommentsClick={handleCommentsClick}
-      {...story}
+      {...item}
     />
   ));
 }

@@ -11,8 +11,15 @@ export function Item({ id }: Pick<Item, "id">) {
 
   return (
     <>
-      <h1>{data.title}</h1>
+      <h1 className="text-2xl">{data.title}</h1>
       <SubTitle {...data} />
+      <div
+        className="text-sm"
+        dangerouslySetInnerHTML={{ __html: data.content }}
+      ></div>
+      <div>
+        <p>Comments start here</p>
+      </div>
     </>
   );
 }
