@@ -8,6 +8,7 @@ import { fetcher } from "./utils/fetcher";
 
 export function TopStories() {
   const [selectedItem, setSelectedItem] = useState<number>();
+
   const { data } = useSWR(API_URLS.NEWS, fetcher<FeedItem[]>, {
     suspense: true,
   });
