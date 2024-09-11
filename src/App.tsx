@@ -6,7 +6,7 @@ export function App() {
   return (
     <>
       <nav className="bg-slate-300 min-h-8"></nav>
-      <main className="mx-auto w-fit p-4 space-y-3">
+      <main className="container box-border mx-auto p-4 space-y-3">
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Suspense fallback={<p>Loading...</p>}>
             <TopStories />

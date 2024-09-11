@@ -20,9 +20,14 @@ export function Comments({ comments }: { comments: Item[] }) {
   return comments.map((comment) => (
     <div
       key={comment.id}
-      className={clsx(levelPaddingMap[comment.level], {
-        "border-l-4": comment.level > 0,
-      })}
+      className={clsx(
+        levelPaddingMap[comment.level],
+        "max-w-fit",
+        "break-words",
+        {
+          "border-l-4": comment.level > 0,
+        },
+      )}
     >
       {stripHtml(comment.content).result}
       {comment.comments.length > 0 ? (
