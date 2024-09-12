@@ -1,11 +1,23 @@
 import useSWR from "swr";
 import type { FeedItem } from "./Schema";
-import { API_URLS } from "./urls";
+import { API_URLS, FeedType, isValidFeedType } from "./utils/urls";
 import { fetcher } from "./utils/fetcher";
 import { SubTitle } from "./components/SubTitle";
+import { Navigate, useParams } from "react-router-dom";
+import { NotFound } from "./NotFound";
 
 export function FeedItems() {
-  const { data } = useSWR(API_URLS.NEWS, fetcher<FeedItem[]>, {
+  const { feedType } = useParams<{ feedType: FeedType }>();
+
+  if (!feedType) {
+    return <NotFound />;
+  }
+
+  if (!isValidFeedType(feedType)) {
+    return <NotFound />;
+  }
+
+  const { data } = useSWR(API_URLS[feedType], fetcher<FeedItem[]>, {
     suspense: true,
   });
 

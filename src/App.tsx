@@ -3,6 +3,7 @@ import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./Root";
 import { FeedItems } from "./FeedItems";
+import { NotFound } from "./NotFound";
 
 const router = createBrowserRouter([
   {
@@ -10,21 +11,26 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: "/news",
-        element: (
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <Suspense fallback={<p>Loading...</p>}>
-              <FeedItems />
-            </Suspense>
-          </ErrorBoundary>
-        ),
+        path: ":feedType",
+        element: <SuspendedFeedItems />,
       },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
 
 export function App() {
   return <RouterProvider router={router} />;
+}
+
+function SuspendedFeedItems() {
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Suspense fallback={<p>Loading...</p>}>
+        <FeedItems />
+      </Suspense>
+    </ErrorBoundary>
+  );
 }
 
 function ErrorFallback({ error }: FallbackProps) {

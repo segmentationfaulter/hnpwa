@@ -6,7 +6,7 @@ import { SubTitle } from "./components/SubTitle";
 import { Comments } from "./Comments";
 
 export function Item({ id }: Pick<Item, "id">) {
-  const { data } = useSWR(API_URLS.ITEM(id), fetcher<Item>, {
+  const { data } = useSWR(API_URLS.item(id), fetcher<Item>, {
     suspense: true,
   });
 
