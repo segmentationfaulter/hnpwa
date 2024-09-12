@@ -1,20 +1,30 @@
 import { Suspense } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
-import { TopStories } from "./TopStories";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Root } from "./Root";
+import { FeedItems } from "./FeedItems";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "/news",
+        element: (
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <FeedItems />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+    ],
+  },
+]);
 
 export function App() {
-  return (
-    <>
-      <nav className="bg-slate-300 min-h-8"></nav>
-      <main className="container box-border mx-auto p-4 space-y-3">
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Suspense fallback={<p>Loading...</p>}>
-            <TopStories />
-          </Suspense>
-        </ErrorBoundary>
-      </main>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 function ErrorFallback({ error }: FallbackProps) {
