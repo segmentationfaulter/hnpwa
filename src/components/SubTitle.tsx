@@ -1,3 +1,4 @@
+import { Link, useHref, useLocation, useMatches } from "react-router-dom";
 import { FeedItem } from "../Schema";
 
 export function SubTitle(props: FeedItem) {
@@ -6,7 +7,9 @@ export function SubTitle(props: FeedItem) {
       <span className="opacity-75">{props.points} points by</span>
       <span className="font-medium">{props.user}</span>
       <span className="opacity-75">{props.time_ago} |</span>
-      <span className="font-medium">{props.comments_count} comments</span>
+      <Link className="font-medium" to={`item/${props.id}`}>
+        {props.comments_count} comments
+      </Link>
     </div>
   );
 }

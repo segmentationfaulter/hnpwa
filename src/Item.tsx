@@ -1,12 +1,20 @@
 import useSWR from "swr";
 import type { Item } from "./Schema";
-import { API_URLS } from "./urls";
+import { API_URLS } from "./utils/urls";
 import { fetcher } from "./utils/fetcher";
 import { SubTitle } from "./components/SubTitle";
 import { Comments } from "./Comments";
+import { useParams } from "react-router-dom";
+import { NotFound } from "./NotFound";
 
-export function Item({ id }: Pick<Item, "id">) {
-  const { data } = useSWR(API_URLS.item(id), fetcher<Item>, {
+export function Item() {
+  const { itemId } = useParams();
+
+  if (!itemId) {
+    return <NotFound />;
+  }
+
+  const { data } = useSWR(API_URLS.item(parseInt(itemId)), fetcher<Item>, {
     suspense: true,
   });
 
