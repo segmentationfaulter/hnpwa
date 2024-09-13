@@ -1,23 +1,25 @@
 import { Suspense } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
 import { Root } from "./Root";
 import { FeedItems } from "./FeedItems";
 import { NotFound } from "./NotFound";
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
-    path: "/",
     element: <Root />,
     children: [
-      {
-        path: ":feedType",
-        element: <SuspendedFeedItems />,
-      },
+      { path: "/:feedType?", element: <SuspendedFeedItems /> },
       { path: "*", element: <NotFound /> },
     ],
   },
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 export function App() {
   return <RouterProvider router={router} />;
