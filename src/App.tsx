@@ -5,13 +5,13 @@ import {
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
-import { Root } from "./Root";
+import { AppLayout } from "./AppLayout";
 import { FeedItems } from "./FeedItems";
 import { NotFound } from "./NotFound";
 
 const routes: RouteObject[] = [
   {
-    element: <Root />,
+    element: <AppLayout />,
     children: [
       { path: "/:feedType?", element: <SuspendedFeedItems /> },
       { path: "*", element: <NotFound /> },

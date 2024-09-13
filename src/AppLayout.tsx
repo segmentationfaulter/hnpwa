@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-export function Root() {
+export function AppLayout() {
   return (
     <>
       <nav className="bg-slate-300 min-h-8"></nav>
