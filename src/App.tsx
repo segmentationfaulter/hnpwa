@@ -9,6 +9,7 @@ import { AppLayout } from "./views/AppLayout";
 import { FeedItems } from "./views/FeedItems";
 import { NotFound } from "./views/NotFound";
 import { Item } from "./views/Item";
+import { User } from "./views/User";
 
 const routes: RouteObject[] = [
   {
@@ -27,6 +28,14 @@ const routes: RouteObject[] = [
         element: (
           <ComponentWithSuspense>
             <Item />
+          </ComponentWithSuspense>
+        ),
+      },
+      {
+        path: "user/:username",
+        element: (
+          <ComponentWithSuspense>
+            <User />
           </ComponentWithSuspense>
         ),
       },

@@ -4,7 +4,7 @@ function generateApiUrl(endpoint: string) {
   return `${BASE_URL}${endpoint}`;
 }
 
-export type FeedType = Exclude<keyof typeof API_URLS, "item">;
+export type FeedType = Exclude<keyof typeof API_URLS, "item" | "user">;
 
 export const API_URLS = {
   news: generateApiUrl("/news/1.json"),
@@ -13,11 +13,12 @@ export const API_URLS = {
   show: generateApiUrl("/show/1.json"),
   jobs: generateApiUrl("/jobs/1.json"),
   item: (id: number) => generateApiUrl(`/item/${id}.json`),
+  user: (username: string) => generateApiUrl(`/user/${username}.json`),
 } as const;
 
 export function isValidFeedType(feedType: string) {
   const validFeedTypes = Object.keys(API_URLS).filter(
-    (type) => type !== "item",
+    (type) => type !== "item" && type !== "user",
   );
   return validFeedTypes.includes(feedType);
 }
