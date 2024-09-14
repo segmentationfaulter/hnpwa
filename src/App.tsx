@@ -62,8 +62,8 @@ function ErrorFallback({ error }: FallbackProps) {
   return (
     <>
       <p>
-        Something went wrong while rendering the top stories, you can see the
-        error message below which could help you figure out what went wrong
+        Something went wrong while rendering the page, you can see the error
+        message below which could help you figure out what went wrong
       </p>
       <pre className="text-red-500">{error.message}</pre>
     </>
