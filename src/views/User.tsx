@@ -21,7 +21,10 @@ export function User() {
       <p>{`User: ${data.id}`}</p>
       <p>{`Created: ${data.created}`}</p>
       <p>{`Karma: ${data.karma}`}</p>
-      <p>{`About: ${data.about}`}</p>
+      <p>{`About:`}</p>
+      {data.about && (
+        <div dangerouslySetInnerHTML={{ __html: data.about }}></div>
+      )}
     </>
   );
 }
