@@ -1,5 +1,5 @@
 import { stripHtml } from "string-strip-html";
-import { Item } from "./Schema";
+import { Item } from "../Schema";
 import clsx from "clsx";
 
 const levelPaddingMap = {
