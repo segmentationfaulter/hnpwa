@@ -36,7 +36,9 @@ function FeedItem(
       <div className="max-w-4">{props.index}</div>
       <div>
         <div className="space-x-1">
-          <span>{props.title}</span>
+          <a href={`${props.url}`} target="_blank">
+            {props.title}
+          </a>
           <span className="text-xs opacity-75">{props.domain}</span>
         </div>
         <SubTitle {...props} />
