@@ -44,7 +44,7 @@ export function AppLayout() {
 
 function navLinkClasses({ isActive }: NavLinkRenderProps): string {
   if (isActive) {
-    return "underline";
+    return "border-b-4 border-slate-600";
   }
 
   return "";
