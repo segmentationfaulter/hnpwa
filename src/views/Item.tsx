@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import type { Item } from "./Schema";
-import { API_URLS } from "./utils/urls";
-import { fetcher } from "./utils/fetcher";
-import { SubTitle } from "./components/SubTitle";
+import type { Item } from "../Schema.js";
+import { API_URLS } from "../utils/urls";
+import { fetcher } from "../utils/fetcher";
+import { SubTitle } from "../shared/SubTitle";
 import { Comments } from "./Comments";
 import { useParams } from "react-router-dom";
 import { NotFound } from "./NotFound";

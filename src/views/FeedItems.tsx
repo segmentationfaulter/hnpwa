@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import type { FeedItem } from "./Schema";
-import { API_URLS, FeedType, isValidFeedType } from "./utils/urls";
-import { fetcher } from "./utils/fetcher";
-import { SubTitle } from "./components/SubTitle";
+import type { FeedItem } from "../Schema";
+import { API_URLS, FeedType, isValidFeedType } from "../utils/urls";
+import { fetcher } from "../utils/fetcher";
+import { SubTitle } from "../shared/SubTitle";
 import { useParams } from "react-router-dom";
 import { NotFound } from "./NotFound";
 

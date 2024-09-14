@@ -5,10 +5,10 @@ import {
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
-import { AppLayout } from "./AppLayout";
-import { FeedItems } from "./FeedItems";
-import { NotFound } from "./NotFound";
-import { Item } from "./Item";
+import { AppLayout } from "./views/AppLayout";
+import { FeedItems } from "./views/FeedItems";
+import { NotFound } from "./views/NotFound";
+import { Item } from "./views/Item";
 
 const routes: RouteObject[] = [
   {
