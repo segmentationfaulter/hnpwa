@@ -23,7 +23,7 @@ export function Item() {
       <h1 className="text-2xl">{data.title}</h1>
       <SubTitle {...data} />
       <div
-        className="text-sm"
+        className="text-sm pb-3 border-b-2"
         dangerouslySetInnerHTML={{ __html: data.content }}
       ></div>
       <div className="space-y-3">
