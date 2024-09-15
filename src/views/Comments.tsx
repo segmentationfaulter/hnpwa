@@ -9,7 +9,7 @@ export function Comments({ comments }: { comments: Item[] }) {
         "border-l-4": comment.level > 0,
       })}
     >
-      <div dangerouslySetInnerHTML={{ __html: comment.content }}></div>
+      <div dangerouslySetInnerHTML={{ __html: comment.content }} />
       {comment.comments.length > 0 ? (
         <Comments comments={comment.comments} />
       ) : null}
