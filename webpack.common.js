@@ -22,7 +22,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "src/index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+      scriptLoading: "module",
+    }),
+  ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
