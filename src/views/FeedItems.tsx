@@ -1,10 +1,12 @@
+import React from "react";
 import useSWR from "swr";
 import type { FeedItem } from "../Schema";
 import { API_URLS, FeedType, isValidFeedType } from "../utils/urls";
 import { fetcher } from "../utils/fetcher";
 import { SubTitle } from "../shared/SubTitle";
 import { useParams } from "react-router-dom";
-import { NotFound } from "./NotFound";
+
+const NotFound = React.lazy(() => import("./NotFound"));
 
 export function FeedItems() {
   const { feedType } = useParams<{ feedType: FeedType }>();

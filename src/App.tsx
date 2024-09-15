@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from "react";
+import React, { ReactNode, Suspense } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import {
   createBrowserRouter,
@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import { AppLayout } from "./views/AppLayout";
 import { FeedItems } from "./views/FeedItems";
-import { NotFound } from "./views/NotFound";
-import { Item } from "./views/Item";
-import { User } from "./views/User";
+
+const Item = React.lazy(() => import("./views/Item"));
+const User = React.lazy(() => import("./views/User"));
+const NotFound = React.lazy(() => import("./views/NotFound"));
 
 const routes: RouteObject[] = [
   {

@@ -1,11 +1,13 @@
+import React from "react";
 import useSWR from "swr";
 import type { User } from "../Schema.js";
 import { API_URLS } from "../utils/urls";
 import { fetcher } from "../utils/fetcher";
 import { useParams } from "react-router-dom";
-import { NotFound } from "./NotFound";
 
-export function User() {
+const NotFound = React.lazy(() => import("./NotFound"));
+
+export default function User() {
   const { username } = useParams();
 
   if (!username) {

@@ -5,9 +5,11 @@ import { fetcher } from "../utils/fetcher";
 import { SubTitle } from "../shared/SubTitle";
 import { Comments } from "./Comments";
 import { useParams } from "react-router-dom";
-import { NotFound } from "./NotFound";
+import React from "react";
 
-export function Item() {
+const NotFound = React.lazy(() => import("./NotFound"));
+
+export default function Item() {
   const { itemId } = useParams();
 
   if (!itemId) {
