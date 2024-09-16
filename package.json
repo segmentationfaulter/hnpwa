@@ -4,9 +4,9 @@
   "description": "Hacker News PWA",
   "private": "true",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "analyze-bundle": "webpack --config webpack.analyze.js",
-    "start": "webpack serve --config webpack.dev.js"
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "analyze-bundle": "NODE_ENV=productio nwebpack --config webpack.analyze.js",
+    "start": "NODE_ENV=development webpack serve --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
